@@ -1,51 +1,52 @@
-# This is the sshd server system-wide configuration file.  See
-# sshd_config(5) for more information.
-
-# This sshd was compiled with PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-
-# The strategy used for options in the default sshd_config shipped with
-# OpenSSH is to specify options with their default value where
-# possible, but leave them commented.  Uncommented options override the
-# default value.
-
-Include /etc/ssh/sshd_config.d/*.conf
-
-#Port 22
-#AddressFamily any
-#ListenAddress 0.0.0.0
-#ListenAddress ::
-
-#HostKey /etc/ssh/ssh_host_rsa_key
-#HostKey /etc/ssh/ssh_host_ecdsa_key
-#HostKey /etc/ssh/ssh_host_ed25519_key
-
-# Ciphers and keying
-#RekeyLimit default none
-
-# Logging
-#SyslogFacility AUTH
-#LogLevel INFO
-
-# Authentication:
-
-#LoginGraceTime 2m
-#PermitRootLogin prohibit-password
-#StrictModes yes
-#MaxAuthTries 6
-#MaxSessions 10
-
-#PubkeyAuthentication yes
-
-# Expect .ssh/authorized_keys2 to be disregarded by default in future.
-#AuthorizedKeysFile     .ssh/authorized_keys .ssh/authorized_keys2
-
-#AuthorizedPrincipalsFile none
-
-#AuthorizedKeysCommand none
-#AuthorizedKeysCommandUser nobody
-
-# For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
-#HostbasedAuthentication no
-# Change to yes if you don't trust ~/.ssh/known_hosts for
-# HostbasedAuthentication
-#IgnoreUserKnownHosts no
+gareth@nuc:~$ sudo mount
+sysfs on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)
+proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)
+udev on /dev type devtmpfs (rw,nosuid,relatime,size=16234032k,nr_inodes=4058508,mode=755,inode64)
+devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)
+tmpfs on /run type tmpfs (rw,nosuid,nodev,noexec,relatime,size=3258176k,mode=755,inode64)
+/dev/mapper/ubuntu--vg-ubuntu--lv on / type ext4 (rw,relatime)
+securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)
+tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev,inode64)
+tmpfs on /run/lock type tmpfs (rw,nosuid,nodev,noexec,relatime,size=5120k,inode64)
+cgroup2 on /sys/fs/cgroup type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate,memory_recursiveprot)
+pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)
+efivarfs on /sys/firmware/efi/efivars type efivarfs (rw,nosuid,nodev,noexec,relatime)
+bpf on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)
+systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=25070)
+hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)
+mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)
+debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)
+tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)
+fusectl on /sys/fs/fuse/connections type fusectl (rw,nosuid,nodev,noexec,relatime)
+configfs on /sys/kernel/config type configfs (rw,nosuid,nodev,noexec,relatime)
+none on /run/credentials/systemd-sysusers.service type ramfs (ro,nosuid,nodev,noexec,relatime,mode=700)
+/var/lib/snapd/snaps/core20_1405.snap on /snap/core20/1405 type squashfs (ro,nodev,relatime,errors=continue,x-gdu.hide)
+/var/lib/snapd/snaps/core20_1611.snap on /snap/core20/1611 type squashfs (ro,nodev,relatime,errors=continue,x-gdu.hide)
+/var/lib/snapd/snaps/lxd_22923.snap on /snap/lxd/22923 type squashfs (ro,nodev,relatime,errors=continue,x-gdu.hide)
+/var/lib/snapd/snaps/lxd_23541.snap on /snap/lxd/23541 type squashfs (ro,nodev,relatime,errors=continue,x-gdu.hide)
+/var/lib/snapd/snaps/snapd_15534.snap on /snap/snapd/15534 type squashfs (ro,nodev,relatime,errors=continue,x-gdu.hide)
+/var/lib/snapd/snaps/snapd_16292.snap on /snap/snapd/16292 type squashfs (ro,nodev,relatime,errors=continue,x-gdu.hide)
+/dev/nvme0n1p2 on /boot type ext4 (rw,relatime)
+/dev/nvme0n1p1 on /boot/efi type vfat (rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro)
+tmpfs on /run/snapd/ns type tmpfs (rw,nosuid,nodev,noexec,relatime,size=3258176k,mode=755,inode64)
+nsfs on /run/snapd/ns/lxd.mnt type nsfs (rw)
+overlay on /var/lib/docker/overlay2/fd1bbcd3df41c70435010114d4b6ddeb0fda6af67e8b18ab9f94e822285249a6/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/UJUIMZYNGVMOF44ANEQHMXIT65:/var/lib/docker/overlay2/l/WH32RVZFOAIM7O6CY2ZRRP3D45:/var/lib/docker/overlay2/l/O2UZPBFDFPL6HUSWLK5QRF3ZM6:/var/lib/docker/overlay2/l/WCYC4YHFE3MREDDHPPFRXDDEVW,upperdir=/var/lib/docker/overlay2/fd1bbcd3df41c70435010114d4b6ddeb0fda6af67e8b18ab9f94e822285249a6/diff,workdir=/var/lib/docker/overlay2/fd1bbcd3df41c70435010114d4b6ddeb0fda6af67e8b18ab9f94e822285249a6/work)
+overlay on /var/lib/docker/overlay2/f5d9c7555fcc99a18b4fb34c837dd1cf2767c27a550b3a6970f5978b938a273a/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/FUHL4I6G4BELXXWRXTJLZ2LMG7:/var/lib/docker/overlay2/l/OA4XSAQ4T6RBHZAA35HLAXK7DE:/var/lib/docker/overlay2/l/2YMM52LTJ55ZTWW4FEAFRLDSIY:/var/lib/docker/overlay2/l/EXORMO75S4O6SRJXY7Z2XS5AZX:/var/lib/docker/overlay2/l/RCI23TGFLYFNH2WFAVFPZGOWA4:/var/lib/docker/overlay2/l/RSNNI42OVDBISDAAJKMKDBO7XU:/var/lib/docker/overlay2/l/RGOECAYEC4SOE52K4KRD3QPUJX:/var/lib/docker/overlay2/l/F3TXTINSBUMG3N3WXZNYQNUYKE:/var/lib/docker/overlay2/l/D6SZAGLM3ZYEUURDQNSN5DO5GW:/var/lib/docker/overlay2/l/YDPKE7VLZMN4TS7DS7TD5YJXQK,upperdir=/var/lib/docker/overlay2/f5d9c7555fcc99a18b4fb34c837dd1cf2767c27a550b3a6970f5978b938a273a/diff,workdir=/var/lib/docker/overlay2/f5d9c7555fcc99a18b4fb34c837dd1cf2767c27a550b3a6970f5978b938a273a/work)
+nsfs on /run/docker/netns/default type nsfs (rw)
+overlay on /var/lib/docker/overlay2/fb6edec7d4c2f235258a99b4061cd2f6dca4d9a796761222a0d272a1e6075815/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/HDPUBWO6LI2LHW67MAT2ERPYNJ:/var/lib/docker/overlay2/l/CRQ7YE2YQGYBTCZTJ35A3AX5U5:/var/lib/docker/overlay2/l/APPUQ5C7HGBW6XJECF6APDWN4V:/var/lib/docker/overlay2/l/4YEN5OSVF7OXVIPFGYGR7XKMGQ:/var/lib/docker/overlay2/l/STNAQ7MJX2EUKECCOQJDKGP7J6:/var/lib/docker/overlay2/l/YRME7WOMDPM3YZLYWEFEARCE4Q,upperdir=/var/lib/docker/overlay2/fb6edec7d4c2f235258a99b4061cd2f6dca4d9a796761222a0d272a1e6075815/diff,workdir=/var/lib/docker/overlay2/fb6edec7d4c2f235258a99b4061cd2f6dca4d9a796761222a0d272a1e6075815/work)
+overlay on /var/lib/docker/overlay2/f3393fb67520fe2ce2878a2a47048df6332d53ecbc3023e02efa5258480b7877/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/VPYWRLDLN3MOGAJDUR7LJT3PXM:/var/lib/docker/overlay2/l/363QDWHHILPUVBPZ7Z3GKJCH55:/var/lib/docker/overlay2/l/NFATQXLD22BX735YX66ABN3QVW:/var/lib/docker/overlay2/l/FKR4RJTKMU4EI6T5R7WDUPAJ73:/var/lib/docker/overlay2/l/CVCPHN3FJRVHS4XOU5GEKPDY65:/var/lib/docker/overlay2/l/VRT6HBU22UC3QV76SNSFN6KGNW:/var/lib/docker/overlay2/l/RJW4QHWOEWRZQNHETKMBUFFIQS:/var/lib/docker/overlay2/l/MCKVKPYXQ2FGZV74QQCKNYFWCR:/var/lib/docker/overlay2/l/QBXWMQMWZHV3FVDRWVCW3ZLHO5:/var/lib/docker/overlay2/l/LPW5PXTA4BDVJPEYUPXO245CJE,upperdir=/var/lib/docker/overlay2/f3393fb67520fe2ce2878a2a47048df6332d53ecbc3023e02efa5258480b7877/diff,workdir=/var/lib/docker/overlay2/f3393fb67520fe2ce2878a2a47048df6332d53ecbc3023e02efa5258480b7877/work)
+overlay on /var/lib/docker/overlay2/488b8ab78e9ea6637dd099f95a3dcf70cb3db22e92fdcf74eb43346dab0502e6/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/FK3NVPTFLLMVXWNXM7FDGDYPSY:/var/lib/docker/overlay2/l/CRQ7YE2YQGYBTCZTJ35A3AX5U5:/var/lib/docker/overlay2/l/APPUQ5C7HGBW6XJECF6APDWN4V:/var/lib/docker/overlay2/l/4YEN5OSVF7OXVIPFGYGR7XKMGQ:/var/lib/docker/overlay2/l/STNAQ7MJX2EUKECCOQJDKGP7J6:/var/lib/docker/overlay2/l/YRME7WOMDPM3YZLYWEFEARCE4Q,upperdir=/var/lib/docker/overlay2/488b8ab78e9ea6637dd099f95a3dcf70cb3db22e92fdcf74eb43346dab0502e6/diff,workdir=/var/lib/docker/overlay2/488b8ab78e9ea6637dd099f95a3dcf70cb3db22e92fdcf74eb43346dab0502e6/work)
+overlay on /var/lib/docker/overlay2/00f19eb7f5825c8236c7c3ad841622cdbbccecec9479ebe1576ed70ba75dac70/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/ULV6TJKDRBTKORZ5RWKOBBIZW5:/var/lib/docker/overlay2/l/CRQ7YE2YQGYBTCZTJ35A3AX5U5:/var/lib/docker/overlay2/l/APPUQ5C7HGBW6XJECF6APDWN4V:/var/lib/docker/overlay2/l/4YEN5OSVF7OXVIPFGYGR7XKMGQ:/var/lib/docker/overlay2/l/STNAQ7MJX2EUKECCOQJDKGP7J6:/var/lib/docker/overlay2/l/YRME7WOMDPM3YZLYWEFEARCE4Q,upperdir=/var/lib/docker/overlay2/00f19eb7f5825c8236c7c3ad841622cdbbccecec9479ebe1576ed70ba75dac70/diff,workdir=/var/lib/docker/overlay2/00f19eb7f5825c8236c7c3ad841622cdbbccecec9479ebe1576ed70ba75dac70/work)
+overlay on /var/lib/docker/overlay2/7905ce7c32ae62359e6a7cdd6db0663b0d007d45cc45426009e2acc6feab5a7f/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/N5SAEKRY7GALYZHS6NPSMHFQVM:/var/lib/docker/overlay2/l/UFQUCN43TBYVJWHAUTROUYDAE7:/var/lib/docker/overlay2/l/ZBEWLB4E64AT37BYGZ57HHVHES:/var/lib/docker/overlay2/l/TMJI3MQLAS4CAJ2FJI6SGO5Z5N:/var/lib/docker/overlay2/l/36HQFOBXYUEFHBKBZMOCEXDD6A:/var/lib/docker/overlay2/l/5CXSNOX3SCI2F65RLOZZRB47ZA:/var/lib/docker/overlay2/l/KAZ2VMBZZV3EIXBKHMVOVMQXMN:/var/lib/docker/overlay2/l/N3X5L75DKHRINPM4Y42ILRMIGY:/var/lib/docker/overlay2/l/JHAJXPZCCIBFYJ2NPHEY4OLJDC:/var/lib/docker/overlay2/l/33H2WYXPYTBQXGF6SHJLOABF3O:/var/lib/docker/overlay2/l/XT4CZVZ36INUT7S2UVNO7ACDB7:/var/lib/docker/overlay2/l/JDBMYKSC2I4N2RD52IOFWTV4MX:/var/lib/docker/overlay2/l/AJ6AL6YOPJ2VXD7MRATQCRM6DU,upperdir=/var/lib/docker/overlay2/7905ce7c32ae62359e6a7cdd6db0663b0d007d45cc45426009e2acc6feab5a7f/diff,workdir=/var/lib/docker/overlay2/7905ce7c32ae62359e6a7cdd6db0663b0d007d45cc45426009e2acc6feab5a7f/work)
+nsfs on /run/docker/netns/c8cee1547bc2 type nsfs (rw)
+nsfs on /run/docker/netns/ee4c1869a682 type nsfs (rw)
+nsfs on /run/docker/netns/98361f56bd5d type nsfs (rw)
+nsfs on /run/docker/netns/e3541e72edf0 type nsfs (rw)
+nsfs on /run/docker/netns/cc2336063bc4 type nsfs (rw)
+nsfs on /run/docker/netns/f1e8fff1e48f type nsfs (rw)
+overlay on /var/lib/docker/overlay2/002930ecb2bbdef458bb977b92e7ced74b8d8eab78bec9282240560d7a74dc58/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/EHYADEM3EBNXCN5F2IOBHP34KA:/var/lib/docker/overlay2/l/WKBS2W2VN5OPKYWTA6PT7EPETY:/var/lib/docker/overlay2/l/S2LWLMQYAUUVJT2NRWNFMK5Y3O:/var/lib/docker/overlay2/l/BRZBZLLY23H7CHPVH3WO4RHUFY:/var/lib/docker/overlay2/l/QSNHZ65G4G7QJ2PZI74NF53AZT,upperdir=/var/lib/docker/overlay2/002930ecb2bbdef458bb977b92e7ced74b8d8eab78bec9282240560d7a74dc58/diff,workdir=/var/lib/docker/overlay2/002930ecb2bbdef458bb977b92e7ced74b8d8eab78bec9282240560d7a74dc58/work)
+nsfs on /run/docker/netns/468e6dfb3e66 type nsfs (rw)
+overlay on /var/lib/docker/overlay2/6cd0c13c72be8e07bbc99f1c0af7c55396c194d30292f81dea36fe2b55ce03d7/merged type overlay (rw,relatime,lowerdir=/var/lib/docker/overlay2/l/UISLOZYGUJ5K2XYVV6YSUQ3L5F:/var/lib/docker/overlay2/l/WKBS2W2VN5OPKYWTA6PT7EPETY:/var/lib/docker/overlay2/l/S2LWLMQYAUUVJT2NRWNFMK5Y3O:/var/lib/docker/overlay2/l/BRZBZLLY23H7CHPVH3WO4RHUFY:/var/lib/docker/overlay2/l/QSNHZ65G4G7QJ2PZI74NF53AZT,upperdir=/var/lib/docker/overlay2/6cd0c13c72be8e07bbc99f1c0af7c55396c194d30292f81dea36fe2b55ce03d7/diff,workdir=/var/lib/docker/overlay2/6cd0c13c72be8e07bbc99f1c0af7c55396c194d30292f81dea36fe2b55ce03d7/work)
+nsfs on /run/docker/netns/31af45640b11 type nsfs (rw)
+tmpfs on /run/user/1000 type tmpfs (rw,nosuid,nodev,relatime,size=3258172k,nr_inodes=814543,mode=700,uid=1000,gid=1000,inode64)
+gareth@nuc:~$ 
